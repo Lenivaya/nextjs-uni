@@ -6,6 +6,16 @@
 
 ![task2_3](.assets/task2_3.png)
 
+## Task 3
+
+![task3_1](.assets/task3_1.png)
+
+![task3_2](.assets/task3_2.png)
+
+![task3_3](.assets/task3_3.png)
+
+![task3_4](.assets/task3_4.png)
+
 ## Getting Started
 
 First, run the development server:
