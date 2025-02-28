@@ -1,0 +1,30 @@
+// Import Tailwind first
+// NOTE: taiwlind v4 does not support using sass by default
+// https://github.com/tailwindlabs/tailwindcss/issues/15716
+// https://tailwindcss.com/docs/compatibility#sass-less-and-stylus
+// https://jits.dev/blog/tailwind-v4-play-nice-with-angular-material/
+@use 'tailwindcss/preflight';
+@use 'tailwindcss/utilities';
+@use 'tailwindcss/theme';
+
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+@use 'base/typography';
+
+@layer base {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 26, 26, 26;
+  }
+
+  html body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+    min-height: 100vh;
+  }
+}

@@ -1,5 +1,6 @@
 import { Post } from '@/app/types/post'
 import Article from '@/app/components/Article'
+import styles from '@/app/styles/components/articles.module.scss'
 
 async function getPosts(): Promise<Post[]> {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -17,9 +18,11 @@ export default async function ArticlesPage() {
   const posts = await getPosts()
 
   return (
-    <div className='space-y-6'>
-      <h1 className='text-3xl font-bold mb-4'>Articles</h1>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+    <div>
+      <div className={styles.header}>
+        <h1>Articles</h1>
+      </div>
+      <div className={styles.grid}>
         {posts.map((post) => (
           <Article key={post.id} post={post} />
         ))}

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import styles from './MainNav.module.scss'
 
 const links = [
   { href: '/articles/favorite', label: 'Favorite Articles' },
@@ -15,28 +16,21 @@ export default function ArticlesNav() {
     return pathname === path
   }
 
-  const linkClasses = (active: boolean) =>
-    `px-4 py-2 rounded-md transition-colors ${
-      active
-        ? 'bg-zinc-800 text-white'
-        : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
-    }`
-
   return (
-    <div className='bg-zinc-950 shadow-md'>
-      <div className='max-w-7xl mx-auto px-6'>
-        <nav className='flex h-14 items-center gap-4'>
+    <nav className={styles.navSecondary}>
+      <div className={styles.container}>
+        <div className={styles.list}>
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={linkClasses(isActive(link.href))}
+              className={`${styles.link} ${isActive(link.href) ? styles.active : ''}`}
             >
               {link.label}
             </Link>
           ))}
-        </nav>
+        </div>
       </div>
-    </div>
+    </nav>
   )
 }

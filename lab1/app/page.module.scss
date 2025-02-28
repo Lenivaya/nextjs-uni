@@ -1,0 +1,83 @@
+@use './styles/abstracts/variables' as vars;
+@use './styles/abstracts/mixins' as mix;
+@use 'sass:color';
+
+.hero {
+  @include mix.flex-center;
+  min-height: calc(100vh - 4rem);
+  text-align: center;
+  padding: vars.$spacing-xl 0;
+}
+
+.content {
+  max-width: vars.$breakpoint-laptop;
+  margin: 0 auto;
+  padding: 0 vars.$spacing-lg;
+
+  @include mix.tablet {
+    padding: 0 vars.$spacing-xl;
+  }
+}
+
+.title {
+  @include mix.heading-1;
+  margin-bottom: vars.$spacing-lg;
+  background: linear-gradient(
+    to right,
+    #fff,
+    color.adjust(vars.$color-accent, $lightness: 20%)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.actions {
+  @include mix.flex-center;
+  gap: vars.$spacing-md;
+  margin-top: vars.$spacing-xl;
+}
+
+.buttonPrimary,
+.buttonSecondary {
+  @include mix.transition-base;
+  padding: vars.$spacing-md vars.$spacing-xl;
+  border-radius: vars.$radius-md;
+  font-weight: 500;
+}
+
+.buttonPrimary {
+  background-color: vars.$color-accent;
+  color: #fff;
+
+  &:hover {
+    background-color: color.adjust(vars.$color-accent, $lightness: -10%);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.buttonSecondary {
+  background-color: vars.$color-secondary;
+  color: color.adjust(#fff, $alpha: -0.2);
+
+  &:hover {
+    background-color: color.adjust(vars.$color-secondary, $lightness: 5%);
+    color: #fff;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
