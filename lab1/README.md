@@ -1,3 +1,5 @@
+# Lab 1
+
 ## Task 2
 
 ![task2_1](.assets/task2_1.png)
@@ -15,6 +17,12 @@
 ![task3_3](.assets/task3_3.png)
 
 ![task3_4](.assets/task3_4.png)
+
+## Task 4
+
+![task41](.assets/task41.png)
+
+![task42](.assets/task42.png)
 
 ## Getting Started
 

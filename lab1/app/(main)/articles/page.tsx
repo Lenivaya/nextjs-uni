@@ -1,6 +1,6 @@
-import { Post } from '@/app/types/post'
 import Article from '@/app/components/Article'
-import styles from '@/app/styles/components/articles.module.scss'
+import { Post } from '@/app/types/post'
+import { SimpleGrid } from '@chakra-ui/react'
 
 async function getPosts(): Promise<Post[]> {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -19,14 +19,16 @@ export default async function ArticlesPage() {
 
   return (
     <div>
-      <div className={styles.header}>
-        <h1>Articles</h1>
+      <div className='mb-8'>
+        <h1 className='text-3xl font-bold relative inline-block after:content-[""] after:absolute after:bottom-[-0.5rem] after:left-0 after:w-[2em] after:h-1 after:bg-gradient-to-r after:from-blue-500 after:to-blue-400 after:rounded-sm'>
+          Articles
+        </h1>
       </div>
-      <div className={styles.grid}>
+      <SimpleGrid columns={3} gap={6}>
         {posts.map((post) => (
           <Article key={post.id} post={post} />
         ))}
-      </div>
+      </SimpleGrid>
     </div>
   )
 }

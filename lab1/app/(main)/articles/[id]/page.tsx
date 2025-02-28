@@ -1,4 +1,5 @@
 import { Post } from '@/app/types/post'
+import { Box, Container, Flex, Grid, Heading, Text } from '@chakra-ui/react'
 
 interface Comment {
   id: number
@@ -40,27 +41,55 @@ export default async function ArticlePage({
   ])
 
   return (
-    <div className='space-y-8'>
-      <article className='prose prose-invert max-w-none'>
-        <h1 className='text-3xl font-bold mb-4'>{article.title}</h1>
-        <p className='text-zinc-300'>{article.body}</p>
-      </article>
+    <Container maxW='container.lg' py={8}>
+      <Flex direction='column' gap={8}>
+        <Box as='article'>
+          <Heading
+            as='h1'
+            size='2xl'
+            mb={4}
+            background='linear-gradient(to right, #63B3ED, #9F7AEA)'
+            backgroundClip='text'
+          >
+            {article.title}
+          </Heading>
+          <Text fontSize='lg' color='gray.300' lineHeight='tall'>
+            {article.body}
+          </Text>
+        </Box>
 
-      <section className='space-y-6'>
-        <h2 className='text-2xl font-bold'>Comments</h2>
-        <div className='grid gap-4'>
-          {comments.map((comment) => (
-            <div key={comment.id} className='p-4 bg-zinc-900 rounded-lg'>
-              <div className='flex items-center gap-2 mb-2'>
-                <h3 className='font-semibold'>{comment.name}</h3>
-                <span className='text-zinc-500'>•</span>
-                <span className='text-zinc-500'>{comment.email}</span>
-              </div>
-              <p className='text-zinc-300'>{comment.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
+        <Box borderBottom='1px' borderColor='gray.700' />
+
+        <Box as='section'>
+          <Heading as='h2' size='xl' mb={6}>
+            Comments
+          </Heading>
+          <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }} gap={6}>
+            {comments.map((comment) => (
+              <Box
+                key={comment.id}
+                bg='gray.800'
+                p={4}
+                borderRadius='lg'
+                transition='all 0.2s'
+                _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
+              >
+                <Flex direction='column' gap={2}>
+                  <Box>
+                    <Heading size='sm' mb={1}>
+                      {comment.name}
+                    </Heading>
+                    <Text color='blue.400' fontSize='sm'>
+                      {comment.email}
+                    </Text>
+                  </Box>
+                  <Text color='gray.400'>{comment.body}</Text>
+                </Flex>
+              </Box>
+            ))}
+          </Grid>
+        </Box>
+      </Flex>
+    </Container>
   )
 }
