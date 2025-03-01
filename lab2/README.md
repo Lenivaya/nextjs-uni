@@ -4,6 +4,12 @@
 
 ![task12](.assets/task12.png)
 
+# Task 2
+
+Migrating db schema to prod detabase on neon.
+
+![task21](.assets/task21.png)
+
 ## Getting Started
 
 First, run the development server:
