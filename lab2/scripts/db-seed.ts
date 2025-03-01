@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import { db } from "@/db/db";
 import { users } from "@/db/schema/user.schema";
 import { posts } from "@/db/schema/post.schema";
