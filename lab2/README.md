@@ -1,16 +1,18 @@
+# Lab 2
+
 ## Task 1
 
 ![task11](.assets/task11.png)
 
 ![task12](.assets/task12.png)
 
-# Task 2
+## Task 2
 
-Migrating newly created db schema to prod detabase on neon.
+Migrating newly created db schema to prod database on neon.
 
 ![task21](.assets/task21.png)
 
-# Task 3
+## Task 3
 
 Seeding the local dev database
 
@@ -18,27 +20,41 @@ Seeding the local dev database
 
 ![task32](.assets/task32.png)
 
-All differences related to connecting to different type of database on prod and development environment are handled automaticaly based on evnironment variables.
+Database connections for both production and development environments are automatically configured based on environment variables.
 
 ```typescript
-import { drizzle as drizzleNeonPostgres } from "drizzle-orm/neon-http";
-import { drizzle as drizzlePostgres } from "drizzle-orm/node-postgres";
-import { env } from "@/env";
-import { Pool } from "pg";
+import { drizzle as drizzleNeonPostgres } from 'drizzle-orm/neon-http'
+import { drizzle as drizzlePostgres } from 'drizzle-orm/node-postgres'
+import { env } from '@/env'
+import { Pool } from 'pg'
 
-const isProduction = env.NODE_ENV === "production";
+const isProduction = env.NODE_ENV === 'production'
 
 // use neon for production, just postgres driver for development
 export const db = isProduction
   ? drizzleNeonPostgres(env.DATABASE_URL)
   : drizzlePostgres({
       client: new Pool({
-        connectionString: env.DATABASE_URL,
-      }),
-    });
+        connectionString: env.DATABASE_URL
+      })
+    })
 
-export type DB = typeof db;
+export type DB = typeof db
 ```
+
+# Task 4
+
+![task41](.assets/task41.png)
+
+![task42](.assets/task42.png)
+
+![task43](.assets/task43.png)
+
+![task44](.assets/task44.png)
+
+![task45](.assets/task45.png)
+
+![task46](.assets/task46.png)
 
 ## Getting Started
 
