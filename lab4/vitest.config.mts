@@ -8,7 +8,13 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul',
       reportsDirectory: './coverage',
-      reporter: ['text', 'json', 'html']
+      reporter: ['text', 'json', 'html'],
+      thresholds: {
+        branches: 40,
+        functions: 40,
+        lines: 40,
+        statements: 40
+      }
     },
     environment: 'jsdom'
   }
