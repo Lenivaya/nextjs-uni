@@ -1,0 +1,55 @@
+@use '../styles/abstracts/variables' as vars;
+@use '../styles/abstracts/mixins' as mix;
+@use 'sass:color';
+
+.nav {
+  background-color: vars.$color-primary;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navSecondary {
+  background-color: color.adjust(vars.$color-primary, $lightness: -3%);
+  border-bottom: none;
+}
+
+.container {
+  @include mix.flex-between;
+  max-width: vars.$breakpoint-desktop;
+  margin: 0 auto;
+  padding: vars.$spacing-md vars.$spacing-lg;
+
+  @include mix.tablet {
+    padding: vars.$spacing-md vars.$spacing-xl;
+  }
+}
+
+.list {
+  @include mix.flex-center;
+  gap: vars.$spacing-md;
+}
+
+.link {
+  padding: vars.$spacing-sm vars.$spacing-md;
+  border-radius: vars.$radius-md;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  @include mix.transition-base;
+
+  &:hover {
+    background-color: vars.$color-secondary;
+    text-decoration: none;
+  }
+
+  @include mix.tablet {
+    padding: vars.$spacing-sm vars.$spacing-lg;
+  }
+}
+
+.active {
+  background-color: vars.$color-accent;
+
+  &:hover {
+    background-color: color.adjust(vars.$color-accent, $lightness: -10%);
+  }
+}

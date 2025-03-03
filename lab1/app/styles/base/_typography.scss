@@ -1,0 +1,33 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as mix;
+
+// Force higher specificity for typography styles
+html body {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+
+  h1 {
+    @include mix.heading-1;
+  }
+
+  h2 {
+    @include mix.heading-2;
+  }
+
+  h3 {
+    @include mix.heading-3;
+  }
+
+  p {
+    margin-bottom: $spacing-md;
+  }
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
